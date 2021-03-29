@@ -1,7 +1,8 @@
 const Event = require("./event");
 class Schedule {
-  constructor() {
-    this.events = [];
+  constructor(calendar) {
+    const commingEventDates = calendar.getComingEventDates(5);
+    this.events = commingEventDates.map((date) => new Event(date, []));
   }
 
   toString() {
