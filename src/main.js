@@ -1,16 +1,30 @@
+const http = require("http");
 const { Wechaty } = require("wechaty");
 const Handler = require("./handler");
 
 const handler = new Handler();
 
+let started = false;
+const printURLOnPage = (url) => {
+  if (started) return;
+  const requestListener = (req, res) => {
+    res.writeHead(200);
+    res.end(`<a href='${url}'>点此扫码登录</a>`);
+  };
+
+  const server = http.createServer(requestListener);
+  server.listen(80);
+  console.log("Server started at: http://localhost");
+  started = true;
+};
+
 Wechaty.instance() // Singleton
-  .on("scan", (qrcode, status) =>
-    console.log(
-      `Scan QR Code to login: ${status}\nhttps://wechaty.js.org/qrcode/${encodeURIComponent(
-        qrcode
-      )}`
-    )
-  )
+  .on("scan", (qrcode, status) => {
+    const url = `https://wechaty.js.org/qrcode/${encodeURIComponent(qrcode)}`;
+    console.log(`Scan QR Code to login: ${status}\n${url}`);
+
+    printURLOnPage(url);
+  })
   .on("login", (user) => console.log(`User ${user} logined`))
   .on("message", async (message) => {
     const room = message.room();
