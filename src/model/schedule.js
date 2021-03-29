@@ -17,8 +17,15 @@ class Schedule {
     return "#排期接龙\n";
   }
 
-  book(date, name) {
-    const event = this.events.find((e) => e.date === date);
+  book(dateOrIndex, name) {
+
+    const index = Number(dateOrIndex);
+    if (index >= 1 && index <= 5) {
+      this.events[index - 1].appendHost(name);
+      return true;
+    }
+
+    const event = this.events.find((e) => e.date === dateOrIndex);
     if (event) {
       event.appendHost(name);
       return true;

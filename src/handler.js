@@ -18,9 +18,10 @@ class Handler {
     const text = message.text();
     if (text === "排期") {
       await message.say(this.schedule.toString());
-    } else if (text.match(/^\d{4}$/)) {
-      this.schedule.book(text, message.from().name());
-      await message.say(this.schedule.toString());
+    } else if (text.match(/^\d+$/)) {
+      const successfully = this.schedule.book(text, message.from().name());
+      if (successfully)
+        await message.say(this.schedule.toString());
     }
   }
 }
