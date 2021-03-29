@@ -13,7 +13,12 @@ class Event {
   }
 
   appendHost(name) {
+    if (this.hosts.includes(name)) {
+      return false;
+    }
+
     this.hosts.push(name);
+    return true;
   }
 }
 

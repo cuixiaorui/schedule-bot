@@ -3,6 +3,7 @@ class Schedule {
   constructor() {
     this.events = [];
   }
+
   toString() {
     return this.title() + this.eventsString();
   }

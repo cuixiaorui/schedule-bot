@@ -9,8 +9,9 @@ class Handler {
     const text = message.text();
     if (text === "排期") {
       await message.say(this.schedule.toString());
-    } else if (text.startsWith("#排期接龙")) {
-      this.schedule.update(text);
+    } else if (text.match(/^\d{4}$/)) {
+      this.schedule.book(text, message.from().name());
+      await message.say(this.schedule.toString());
     }
   }
 }
