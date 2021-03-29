@@ -11,5 +11,8 @@ describe("Schedule", () => {
     schedule.book("0329", "Seaborn");
     expect(schedule.toString()).toBe(`#排期接龙
 0329 Seaborn`);
+    schedule.book("0329", "Diven");
+    expect(schedule.toString()).toBe(`#排期接龙
+0329 Seaborn, Diven`);
   });
 });

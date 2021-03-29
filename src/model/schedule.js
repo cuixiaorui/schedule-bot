@@ -16,7 +16,12 @@ class Schedule {
   }
 
   book(date, name) {
-    this.events.push(new Event(date, [name]));
+    const event = this.events.find((e) => e.date === date);
+    if (event) {
+      event.appendHost(name);
+    } else {
+      this.events.push(new Event(date, [name]));
+    }
   }
 }
 

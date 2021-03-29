@@ -11,6 +11,10 @@ class Event {
   hostsString() {
     return this.hosts.join(", ");
   }
+
+  appendHost(name) {
+    this.hosts.push(name);
+  }
 }
 
 module.exports = Event;
