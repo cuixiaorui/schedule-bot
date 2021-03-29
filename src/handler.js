@@ -3,13 +3,18 @@ const Calendar = require("./model/calendar");
 
 class Handler {
   constructor() {
+    this.schedule = new Schedule(this.nowCalendar());
+  }
+
+  nowCalendar() {
     const now = new Date();
     const today = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
-    const calendar = new Calendar(today);
-    this.schedule = new Schedule(calendar);
+    return new Calendar(today);
   }
 
   async handle(message) {
+    this.schedule.travelTo(this.nowCalendar());
+
     const text = message.text();
     if (text === "排期") {
       await message.say(this.schedule.toString());

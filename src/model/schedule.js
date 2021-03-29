@@ -26,6 +26,23 @@ class Schedule {
 
     return false;
   }
+
+  travelTo(calendar) {
+    const eventDates = calendar.getComingEventDates(5);
+    this.removeOutdatedEvents(eventDates);
+    this.addComingEvents(eventDates);
+  }
+
+  removeOutdatedEvents(eventDates) {
+    this.events = this.events.filter((e) => eventDates.includes(e.date));
+  }
+
+  addComingEvents(eventDates) {
+    eventDates.forEach((date) => {
+      if (!this.events.find((e) => e.date === date))
+        this.events.push(new Event(date, []));
+    });
+  }
 }
 
 module.exports = Schedule;

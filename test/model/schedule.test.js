@@ -27,4 +27,20 @@ describe("Schedule", () => {
     expect(schedule.toString()).toContain("0107");
     expect(schedule.toString()).toContain("0109");
   });
+
+  it("should update events when travel to new date", () => {
+    const schedule = new Schedule(new Calendar("2021-1-1"));
+    expect(schedule.toString()).toContain("0101");
+    expect(schedule.toString()).toContain("0103");
+    expect(schedule.toString()).toContain("0105");
+    expect(schedule.toString()).toContain("0107");
+    expect(schedule.toString()).toContain("0109");
+
+    schedule.travelTo(new Calendar("2021-1-3"));
+    expect(schedule.toString()).toContain("0103");
+    expect(schedule.toString()).toContain("0105");
+    expect(schedule.toString()).toContain("0107");
+    expect(schedule.toString()).toContain("0109");
+    expect(schedule.toString()).toContain("0111");
+  });
 });
