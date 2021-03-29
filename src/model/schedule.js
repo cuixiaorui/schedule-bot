@@ -18,7 +18,6 @@ class Schedule {
   }
 
   book(dateOrIndex, name) {
-
     const index = Number(dateOrIndex);
     if (index >= 1 && index <= 5) {
       this.events[index - 1].appendHost(name);

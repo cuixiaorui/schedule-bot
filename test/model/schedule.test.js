@@ -40,17 +40,21 @@ describe("Schedule", () => {
 
   it("should update events when travel to new date", () => {
     const schedule = new Schedule(new Calendar("2021-1-1"));
-    expect(schedule.toString()).toContain("0101");
-    expect(schedule.toString()).toContain("0103");
-    expect(schedule.toString()).toContain("0105");
-    expect(schedule.toString()).toContain("0107");
-    expect(schedule.toString()).toContain("0109");
+    let text = schedule.toString();
+    expect(text).toContain("0101");
+    expect(text).toContain("0103");
+    expect(text).toContain("0105");
+    expect(text).toContain("0107");
+    expect(text).toContain("0109");
 
     schedule.travelTo(new Calendar("2021-1-3"));
-    expect(schedule.toString()).toContain("0103");
-    expect(schedule.toString()).toContain("0105");
-    expect(schedule.toString()).toContain("0107");
-    expect(schedule.toString()).toContain("0109");
-    expect(schedule.toString()).toContain("0111");
+    text = schedule.toString();
+    expect(text).not.toContain("0101");
+    expect(text).toContain("0103");
+    expect(text).toContain("0103");
+    expect(text).toContain("0105");
+    expect(text).toContain("0107");
+    expect(text).toContain("0109");
+    expect(text).toContain("0111");
   });
 });
