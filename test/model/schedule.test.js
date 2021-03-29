@@ -13,9 +13,9 @@ describe("Schedule", () => {
     const schedule = new Schedule(calendar);
     schedule.book("0101", "Seaborn");
     expect(schedule.toString()).toContain(`#排期接龙`);
-    expect(schedule.toString()).toContain(`0101 Seaborn`);
+    expect(schedule.toString()).toContain(`0101\n  - Seaborn`);
     schedule.book("0101", "Diven");
-    expect(schedule.toString()).toContain(`0101 Seaborn, Diven`);
+    expect(schedule.toString()).toContain(`0101\n  - Seaborn\n  - Diven`);
   });
 
   it("should list 5 coming events", () => {

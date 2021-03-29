@@ -5,11 +5,11 @@ class Event {
   }
 
   toString() {
-    return this.date + " " + this.hostsString();
+    return `${this.date}\n${this.hostsString()}`;
   }
 
   hostsString() {
-    return this.hosts.join(", ");
+    return this.hosts.map(h => `  - ${h}`).join("\n");
   }
 
   appendHost(name) {
