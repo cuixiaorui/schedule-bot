@@ -11,6 +11,6 @@
     "wechaty": "^0.56.6"
   },
   "devDependencies": {
-    "hlj": "^0.3.2"
+    "hlj": "0.4.0"
   }
 }
