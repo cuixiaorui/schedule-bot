@@ -19,10 +19,8 @@ class Handler {
     if (text === "排期") {
       await message.say(this.schedule.toString());
     } else if (text.match(/^\d{4}$/)) {
-      if (calendar.validate(text)) {
-        this.schedule.book(text, message.from().name());
-        await message.say(this.schedule.toString());
-      }
+      this.schedule.book(text, message.from().name());
+      await message.say(this.schedule.toString());
     }
   }
 }

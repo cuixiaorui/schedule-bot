@@ -14,6 +14,7 @@ class Event {
 
   appendHost(name) {
     if (this.hosts.includes(name)) {
+      this.hosts = this.hosts.filter(h => h !== name);
       return false;
     }
 
