@@ -1,8 +1,9 @@
 class Calendar {
   constructor(today) {
-    this.yyyy = today.slice(0, 4);
-    this.mm = today.slice(4, 6);
-    this.dd = today.slice(6);
+    const arrTody = today.split('-')
+    this.yyyy = arrTody[0];
+    this.mm = this.formatStr(arrTody[1]);
+    this.dd = this.formatStr(arrTody[2]);
   }
 
   validate(date) {
