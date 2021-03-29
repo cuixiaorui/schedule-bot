@@ -10,7 +10,7 @@ class Schedule {
   }
 
   eventsString() {
-    return this.events.map((e) => e.toString()).join("\n");
+    return this.events.map((e, index) => e.toString(index + 1)).join("\n");
   }
 
   title() {

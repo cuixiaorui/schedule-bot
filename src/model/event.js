@@ -4,8 +4,8 @@ class Event {
     this.hosts = hosts;
   }
 
-  toString() {
-    return `${this.date}\n${this.hostsString()}`;
+  toString(index) {
+    return `${index}. ${this.date}\n${this.hostsString()}`;
   }
 
   hostsString() {

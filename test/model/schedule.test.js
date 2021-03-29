@@ -13,19 +13,19 @@ describe("Schedule", () => {
     const schedule = new Schedule(calendar);
     schedule.book("0101", "Seaborn");
     expect(schedule.toString()).toContain(`#排期接龙`);
-    expect(schedule.toString()).toContain(`0101\n  - Seaborn`);
+    expect(schedule.toString()).toContain(`1. 0101\n  - Seaborn`);
     schedule.book("0101", "Diven");
-    expect(schedule.toString()).toContain(`0101\n  - Seaborn\n  - Diven`);
+    expect(schedule.toString()).toContain(`1. 0101\n  - Seaborn\n  - Diven`);
   });
 
   it("should list 5 coming events", () => {
     const calendar = new Calendar("2021-1-1");
     const schedule = new Schedule(calendar);
-    expect(schedule.toString()).toContain("0101");
-    expect(schedule.toString()).toContain("0103");
-    expect(schedule.toString()).toContain("0105");
-    expect(schedule.toString()).toContain("0107");
-    expect(schedule.toString()).toContain("0109");
+    expect(schedule.toString()).toContain("1. 0101");
+    expect(schedule.toString()).toContain("2. 0103");
+    expect(schedule.toString()).toContain("3. 0105");
+    expect(schedule.toString()).toContain("4. 0107");
+    expect(schedule.toString()).toContain("5. 0109");
   });
 
   it("should update events when travel to new date", () => {
