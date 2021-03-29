@@ -3,7 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "hlj test/"
+  },
   "dependencies": {
     "wechaty": "^0.56.6"
+  },
+  "devDependencies": {
+    "hlj": "^0.3.2"
   }
 }
