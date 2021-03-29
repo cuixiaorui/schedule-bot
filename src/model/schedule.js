@@ -21,9 +21,10 @@ class Schedule {
     const event = this.events.find((e) => e.date === date);
     if (event) {
       event.appendHost(name);
-    } else {
-      this.events.push(new Event(date, [name]));
+      return true;
     }
+
+    return false;
   }
 }
 
