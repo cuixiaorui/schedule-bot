@@ -17,6 +17,10 @@ class Event {
       return false;
     }
 
+    if (this.hosts.length === 2) {
+      return false;
+    }
+
     this.hosts.push(name);
     return true;
   }
