@@ -1,8 +1,13 @@
 const http = require("http");
 const { Wechaty } = require("wechaty");
 const ScheduleHandler = require("./handler/scheduleHandler");
+const OpsHandler = require("./handler/opsHandler");
+const RoomNameMatcher = require("./roomNameMatcher");
 
-const scheduleHandler = new ScheduleHandler();
+const roomNameMatcher = new RoomNameMatcher([
+  new ScheduleHandler(),
+  new OpsHandler(),
+]);
 
 let started = false;
 const printURLOnPage = (url) => {
@@ -27,11 +32,7 @@ Wechaty.instance() // Singleton
   })
   .on("login", (user) => console.log(`User ${user} logined`))
   .on("message", async (message) => {
-    const room = message.room();
-    if (room) {
-      const topic = await room.topic();
-      if (topic === "软件匠艺结对直播主播群")
-        await scheduleHandler.handle(message);
-    }
+    const handlers = await roomNameMatcher.match(message);
+    handlers.forEach((h) => h.handle(message));
   })
   .start();

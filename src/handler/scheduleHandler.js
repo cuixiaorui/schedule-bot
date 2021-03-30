@@ -3,6 +3,7 @@ const Calendar = require("../model/calendar");
 
 class ScheduleHandler {
   constructor() {
+    this.roomName = "软件匠艺结对直播主播群";
     this.schedule = new Schedule(this.nowCalendar());
   }
 
