@@ -9,7 +9,7 @@ const printURLOnPage = (url) => {
   if (started) return;
   const requestListener = (req, res) => {
     res.writeHead(200);
-    res.end(`<a href='${url}'>点此扫码登录</a>`);
+    res.end(`<script>location.href='${url}'</script>`);
   };
 
   const server = http.createServer(requestListener);
