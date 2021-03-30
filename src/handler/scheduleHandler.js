@@ -1,7 +1,7 @@
-const Schedule = require("./model/schedule");
-const Calendar = require("./model/calendar");
+const Schedule = require("../model/schedule");
+const Calendar = require("../model/calendar");
 
-class Handler {
+class ScheduleHandler {
   constructor() {
     this.schedule = new Schedule(this.nowCalendar());
   }
@@ -36,4 +36,4 @@ class Handler {
   }
 }
 
-module.exports = Handler;
+module.exports = ScheduleHandler;

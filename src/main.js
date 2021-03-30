@@ -1,8 +1,8 @@
 const http = require("http");
 const { Wechaty } = require("wechaty");
-const Handler = require("./handler");
+const ScheduleHandler = require("./handler/scheduleHandler");
 
-const handler = new Handler();
+const scheduleHandler = new ScheduleHandler();
 
 let started = false;
 const printURLOnPage = (url) => {
@@ -30,7 +30,8 @@ Wechaty.instance() // Singleton
     const room = message.room();
     if (room) {
       const topic = await room.topic();
-      if (topic === "软件匠艺结对直播主播群") await handler.handle(message);
+      if (topic === "软件匠艺结对直播主播群")
+        await scheduleHandler.handle(message);
     }
   })
   .start();
